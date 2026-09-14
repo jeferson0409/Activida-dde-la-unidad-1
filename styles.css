@@ -393,3 +393,212 @@ h1 span, h1 em, h2 em {
   .detalles-contacto { grid-template-columns: 1fr; }
   .pie-sitio { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
+
+/* ══════════════════════════════════════════════
+   ANIMACIONES DE SCROLL (data-aos ligero)
+══════════════════════════════════════════════ */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-aos].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-aos][data-aos-delay="100"] { transition-delay: 0.1s; }
+[data-aos][data-aos-delay="200"] { transition-delay: 0.2s; }
+[data-aos][data-aos-delay="300"] { transition-delay: 0.3s; }
+
+/* ══════════════════════════════════════════════
+   TARJETA ESTADÍSTICA (stat-card en index)
+══════════════════════════════════════════════ */
+.stat-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1.8rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+  cursor: default;
+}
+.stat-card:hover {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ══════════════════════════════════════════════
+   HABILIDADES (skill-badge)
+══════════════════════════════════════════════ */
+.skill-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.skill-badge:hover {
+  border-color: var(--accent-red);
+  color: var(--text-main);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.skill-badge i { margin-right: 0.4rem; color: var(--accent-red); }
+
+/* ══════════════════════════════════════════════
+   FORMULARIO DE CONTACTO
+══════════════════════════════════════════════ */
+.formulario-wrapper {
+  border-top: 1px solid var(--card-border);
+  padding-top: 3rem;
+  margin-top: 3rem;
+}
+
+.form-label-custom {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.texto-opcional {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: none;
+}
+
+.campo-form {
+  width: 100%;
+  background-color: #18181b;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+  appearance: none;
+}
+
+.campo-form::placeholder { color: #52525b; }
+
+.campo-form:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.campo-form option { background: #18181b; }
+
+/* Estado válido / inválido */
+.campo-ok  { border-color: #22c55e !important; }
+.campo-error { border-color: var(--accent-red) !important; box-shadow: 0 0 0 3px rgba(255,42,95,0.15); }
+
+/* Mensajes de error */
+.error-msg {
+  display: none;
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+/* Contador de caracteres */
+.contador-chars {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
+/* Checkbox personalizado */
+.check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.check-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-red);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Botón enviar */
+.btn-enviar {
+  background: var(--accent-red);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--accent-glow);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.btn-enviar:hover {
+  background: var(--accent-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,42,95,0.4);
+}
+.btn-enviar:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Shake en error */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60%  { transform: translateX(-8px); }
+  40%, 80%  { transform: translateX(8px); }
+}
+.btn-shake { animation: shake 0.45s ease; }
+
+/* Alerta de éxito */
+.alert-exito {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #86efac;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Spinner Bootstrap override */
+.spinner-border { color: #fff; }
+
+/* enlace-flecha */
+.enlace-flecha {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-red);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+.enlace-flecha:hover { border-color: var(--accent-red); color: var(--accent-red); }
+
+/* h2 general en secciones */
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+}

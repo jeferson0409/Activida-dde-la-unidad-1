@@ -4,21 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contacto | Valentina Ríos</title>
+  <title>Contacto | Jeferson Franco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <header class="encabezado-sitio">
+  <header class="encabezado-sitio" data-aos="fade-down">
     <a class="marca" href="index.html">
       <span class="marca-simbolo">JF</span>
       <span>Jeferson<br><em>Franco</em></span>
     </a>
 
-    <nav aria-label="Navegación principal">
+    <nav aria-label="Navegación principal" id="mainNav">
       <a href="index.html">Inicio</a>
       <a href="trayectoria.html">Trayectoria</a>
       <a class="activo" href="contacto.html">Contacto</a>
@@ -29,32 +31,147 @@
     </a>
   </header>
 
-  <main class="principal-contacto">
+  <main class="principal-contacto" data-aos="fade-up">
     <p class="texto-pequeno">03 / Abramos la conversación</p>
     <h1>¿Tienes una<br><em>buena idea?</em></h1>
 
+    <!-- Tarjetas de contacto rápido (Bootstrap Grid) -->
     <dl class="detalles-contacto">
       <div>
-        <dt>Correo</dt>
+        <dt><i class="bi bi-envelope-fill me-1"></i>Correo</dt>
         <dd>
           <a href="mailto:jefersonfrancofabrega@gmail.com">jefersonfrancofabrega@gmail.com</a>
         </dd>
       </div>
 
       <div>
-        <dt>Teléfono</dt>
+        <dt><i class="bi bi-telephone-fill me-1"></i>Teléfono</dt>
         <dd>
-          <a href="tel:+573001234567">+57 311 704 2479</a>
+          <a href="tel:+573117042479">+57 311 704 2479</a>
         </dd>
       </div>
 
       <div>
-        <dt>Redes</dt>
+        <dt><i class="bi bi-instagram me-1"></i>Redes</dt>
         <dd>
-          <a href="https://www.instagram.com/fabrega_mlb?utm_source=qr&igsi=bThxaXV1bzB2ZHZn" target="_blank" rel="noreferrer">Instagram ↗</a>
+          <a href="https://www.instagram.com/fabrega_mlb" target="_blank" rel="noreferrer">Instagram ↗</a>
         </dd>
       </div>
     </dl>
+
+    <!-- ── FORMULARIO CON VALIDACIÓN JS ── -->
+    <div class="formulario-wrapper mt-5" data-aos="fade-up">
+      <p class="indice-seccion">ENVÍAME UN MENSAJE</p>
+      <h2 class="mb-4">Escríbeme<br>directamente.</h2>
+
+      <!-- Alerta de éxito (oculta por defecto, la muestra jQuery) -->
+      <div id="alertaExito" class="alert-exito" role="alert" style="display:none;">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        ¡Mensaje enviado! Me pondré en contacto pronto.
+      </div>
+
+      <form id="formContacto" novalidate>
+
+        <div class="row g-3">
+          <!-- Nombre -->
+          <div class="col-md-6">
+            <label for="nombre" class="form-label-custom">Nombre completo *</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="campo-form"
+              placeholder="Ej. María Gómez"
+              autocomplete="name">
+            <span class="error-msg" id="errorNombre"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="email" class="form-label-custom">Correo electrónico *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="campo-form"
+              placeholder="correo@ejemplo.com"
+              autocomplete="email">
+            <span class="error-msg" id="errorEmail"></span>
+          </div>
+
+          <!-- Asunto -->
+          <div class="col-12">
+            <label for="asunto" class="form-label-custom">Asunto *</label>
+            <input
+              type="text"
+              id="asunto"
+              name="asunto"
+              class="campo-form"
+              placeholder="¿De qué quieres hablar?">
+            <span class="error-msg" id="errorAsunto"></span>
+          </div>
+
+          <!-- Teléfono (opcional) -->
+          <div class="col-md-6">
+            <label for="telefono" class="form-label-custom">Teléfono <span class="texto-opcional">(opcional)</span></label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="campo-form"
+              placeholder="+57 300 000 0000"
+              autocomplete="tel">
+            <span class="error-msg" id="errorTelefono"></span>
+          </div>
+
+          <!-- Tipo de consulta -->
+          <div class="col-md-6">
+            <label for="tipo" class="form-label-custom">Tipo de consulta *</label>
+            <select id="tipo" name="tipo" class="campo-form">
+              <option value="">Selecciona una opción…</option>
+              <option value="trabajo">Propuesta laboral</option>
+              <option value="proyecto">Proyecto freelance</option>
+              <option value="colaboracion">Colaboración</option>
+              <option value="otro">Otro</option>
+            </select>
+            <span class="error-msg" id="errorTipo"></span>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="col-12">
+            <label for="mensaje" class="form-label-custom">Mensaje *</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              class="campo-form"
+              rows="5"
+              placeholder="Cuéntame tu idea o propuesta…"></textarea>
+            <span class="error-msg" id="errorMensaje"></span>
+            <span class="contador-chars" id="contadorMensaje">0 / 500 caracteres</span>
+          </div>
+
+          <!-- Términos -->
+          <div class="col-12">
+            <label class="check-label">
+              <input type="checkbox" id="terminos" name="terminos">
+              <span>Acepto que mis datos sean usados para responder mi consulta. *</span>
+            </label>
+            <span class="error-msg" id="errorTerminos"></span>
+          </div>
+
+          <!-- Botón enviar -->
+          <div class="col-12">
+            <button type="submit" class="btn-enviar" id="btnEnviar">
+              <span id="textoBtn">Enviar mensaje <i class="bi bi-send-fill ms-1"></i></span>
+              <span id="loadingBtn" style="display:none;">
+                <span class="spinner-border spinner-border-sm me-2" role="status"></span>Enviando…
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
   </main>
 
   <footer class="pie-sitio">
@@ -62,6 +179,10 @@
     <span>Disponible para colaborar</span>
     <span><a href="index.html">Volver al inicio ↑</a></span>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
 
 </html>
